@@ -33,8 +33,28 @@ public class Radio {
         if (radioStationNumber == 0) {
             radioStationNumber = 9;
         }
+    }
 
+    int volumeLevel;
 
+    public int getVolumeLevel() {
+        return volumeLevel;
+    }
+
+    public void setVolumeLevel(int newVolumeLevel) {
+        volumeLevel = newVolumeLevel;
+    }
+
+    public void plusVolumeLevel() {
+        if (volumeLevel < 100) {
+            volumeLevel++;
+        }
+    }
+
+    public void minusVolumeLevel() {
+        if (volumeLevel > 0) {
+            volumeLevel--;
+        }
     }
 }
 
