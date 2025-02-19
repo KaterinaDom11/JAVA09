@@ -30,7 +30,7 @@ public class Radio {
         if (radioStationNumber == 9) {
             radioStationNumber = 0;
         } else {
-            radioStationNumber ++;
+            radioStationNumber++;
         }
     }
 
