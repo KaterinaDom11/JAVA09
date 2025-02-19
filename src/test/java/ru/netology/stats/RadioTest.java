@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
-    public void firstRadioStation() {
+    public void firstRadioStation() { //проверка допустимости набора первой (нулевой) станции
         Radio service = new Radio();
 
         service.setStationNunber(0);
@@ -19,7 +19,7 @@ public class RadioTest {
     }
 
     @Test
-    public void lastRadioStation() {
+    public void lastRadioStation() { //проверка допустимости набора последней станции(девятой) станции
         Radio service = new Radio();
 
         service.setStationNunber(9);
@@ -31,7 +31,7 @@ public class RadioTest {
     }
 
     @Test
-    public void maximumRadioStation() {
+    public void maximumRadioStation() { //проверка допустимости свыше максимальной станции
         Radio service = new Radio();
 
         service.setStationNunber(10);
@@ -43,7 +43,7 @@ public class RadioTest {
     }
 
     @Test
-    public void minimumRadioStation() {
+    public void minimumRadioStation() { //проверка допустимости ниже минимальной станции
         Radio service = new Radio();
 
         service.setStationNunber(-1);
@@ -55,7 +55,7 @@ public class RadioTest {
     }
 
     @Test
-    public void switchLastStationNext() {
+    public void switchLastStationNext() { //проверка переключения с последней станции на следующую
         Radio service = new Radio();
         service.setStationNunber(9);
 
@@ -68,7 +68,20 @@ public class RadioTest {
     }
 
     @Test
-    public void switchFirstStationNext() {
+    public void switchSecondLastStationNext() { //проверка переключения с предпоследней станции на следующую
+        Radio service = new Radio();
+        service.setStationNunber(8);
+
+        service.nextStationNunber();
+
+        int expected = 9;
+        int actual = service.getRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void switchFirstStationNext() { //проверка переключения на следующую станцию
         Radio service = new Radio();
         service.setStationNunber(0);
 
@@ -81,7 +94,21 @@ public class RadioTest {
     }
 
     @Test
-    public void switchFirstStationPrev() {
+    public void switchSecondStationNext() { //проверка переключения на следующую станцию
+        Radio service = new Radio();
+        service.setStationNunber(1);
+
+        service.nextStationNunber();
+
+        int expected = 2;
+        int actual = service.getRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
+    public void switchFirstStationPrev() { // проверка переключения на предыдущей станцию с первой (нулевой)
         Radio service = new Radio();
         service.setStationNunber(0);
 
@@ -94,7 +121,7 @@ public class RadioTest {
     }
 
     @Test
-    public void switchLastStationPrev() {
+    public void switchLastStationPrev() { //проверка переключения на предыдущую станцию с последней
         Radio service = new Radio();
         service.setStationNunber(9);
 
@@ -107,7 +134,33 @@ public class RadioTest {
     }
 
     @Test
-    public void switchLastVolumeLevelPlus() {
+    public void switchSecondStationPrev() { //проверка переключения на предыдущую станцию со второй
+        Radio service = new Radio();
+        service.setStationNunber(1);
+
+        service.prevStationNunber();
+
+        int expected = 0;
+        int actual = service.getRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void switchSecondLastStationPrev() { //проверка переключения на предыдущую станцию и ниже
+        Radio service = new Radio();
+        service.setStationNunber(8);
+
+        service.prevStationNunber();
+
+        int expected = 7;
+        int actual = service.getRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void switchLastVolumeLevelPlus() { //проверка увеличения громкости с максимального значения
         Radio service = new Radio();
         service.setVolumeLevel(100);
 
@@ -120,7 +173,7 @@ public class RadioTest {
     }
 
     @Test
-    public void switchFirstVolumeLevelPlus() {
+    public void switchFirstVolumeLevelPlus() {//проверка увеличения громкости с минимального значения
         Radio service = new Radio();
         service.setVolumeLevel(0);
 
@@ -133,7 +186,7 @@ public class RadioTest {
     }
 
     @Test
-    public void switchFirstVolumeLevelMinus() {
+    public void switchFirstVolumeLevelMinus() { //проверка уменьшения громкости с минимльного значения
         Radio service = new Radio();
         service.setVolumeLevel(0);
 
@@ -146,7 +199,7 @@ public class RadioTest {
     }
 
     @Test
-    public void switchLastVolumeLevelMinus() {
+    public void switchLastVolumeLevelMinus() { // проверка уменьшения громкости с максимального значения
         Radio service = new Radio();
         service.setVolumeLevel(100);
 

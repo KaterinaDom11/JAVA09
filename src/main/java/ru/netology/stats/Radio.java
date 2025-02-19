@@ -1,10 +1,15 @@
 package ru.netology.stats;
 
 public class Radio {
-    int radioStationNumber;
+    private int radioStationNumber;
+    private int volumeLevel;
 
     public int getRadioStationNumber() {
         return radioStationNumber;
+    }
+
+    public int getVolumeLevel() {
+        return volumeLevel;
     }
 
     public void setStationNunber(int newRadioStationNumber) {
@@ -17,33 +22,26 @@ public class Radio {
         radioStationNumber = newRadioStationNumber;
     }
 
+    public void setVolumeLevel(int newVolumeLevel) {
+        volumeLevel = newVolumeLevel;
+    }
+
     public void nextStationNunber() {
-        if (radioStationNumber < 9) {
-            radioStationNumber++;
-        }
         if (radioStationNumber == 9) {
             radioStationNumber = 0;
+        } else {
+            radioStationNumber ++;
         }
     }
 
     public void prevStationNunber() {
-        if (radioStationNumber > 0) {
-            radioStationNumber--;
-        }
         if (radioStationNumber == 0) {
             radioStationNumber = 9;
+        } else {
+            radioStationNumber--;
         }
     }
 
-    int volumeLevel;
-
-    public int getVolumeLevel() {
-        return volumeLevel;
-    }
-
-    public void setVolumeLevel(int newVolumeLevel) {
-        volumeLevel = newVolumeLevel;
-    }
 
     public void plusVolumeLevel() {
         if (volumeLevel < 100) {
